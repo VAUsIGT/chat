@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Профиль</title>
+</head>
+<body>
+    <h1>Профиль пользователя {{ profile.username }}</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <p>Имя пользователя: {{ profile.username }}</p>
+    {% if is_current_user %}
+        <p>Это ваш профиль.</p>
+        <form action="/update_profile" method="POST">
+            <textarea name="data" rows="5" cols="40">{{ user_data }}</textarea><br>
+            <input type="submit" value="Сохранить">
+        </form>
+        <p><a href="/logout">Выйти</a></p>
+    {% else %}
+        {% if user_profiles %}
+            <h2>Другие пользователи:</h2>
+            <ul>
+                {% for username, user in user_profiles.items() %}
+                    <li><a href="/profile?username={{ username }}">{{ username }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

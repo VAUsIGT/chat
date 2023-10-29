@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Вход</title>
+  </head>
+  <body>
+    <h1>Вход в аккаунт</h1>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <form method="post" action="/login">
+      <input type="text" name="username" placeholder="Имя пользователя"><br>
+      <input type="password" name="password" placeholder="Пароль"><br>
+      <input type="submit" value="Войти">
+    </form>
+  </body>
+</html>
